@@ -1,7 +1,8 @@
 plugins {
-    id "com.github.node-gradle.node" version "3.3.0"
-    id "io.github.guqing.plugin-development" version "0.0.6-SNAPSHOT"
     id 'java'
+    id "com.github.node-gradle.node" version "5.0.0"
+    id "io.freefair.lombok" version "8.0.1"
+    id "run.halo.plugin.devtools" version "0.0.7"
 }
 
 group 'run.halo.githuboss'
@@ -10,22 +11,10 @@ compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
-    maven { url 'https://s01.oss.sonatype.org/content/repositories/releases' }
-    maven { url 'https://repo.spring.io/milestone' }
     mavenCentral()
-}
-
-jar {
-    enabled = true
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    manifest.attributes(
-            'Plugin-Version': "${project.version}",
-    )
-    from {
-        configurations.runtimeClasspath.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {

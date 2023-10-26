@@ -423,7 +423,7 @@ public class GitHubAttachmentHandler implements AttachmentHandler {
         boolean needRemoveMapKey = false;
 
         FileNameHolder(String fileName, GithubOssProperties properties) {
-            this.fileName = FileNameUtils.formatDateInFileName(fileName);
+            this.fileName = FileNameUtils.randomFileName(fileName, 4);
             this.objectKey = properties.getObjectName(this.fileName);
             this.fileType = FileNameUtils.fileType(this.fileName);
             this.originalFileName = fileName;
